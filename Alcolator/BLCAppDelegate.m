@@ -6,17 +6,23 @@
 //  Copyright (c) 2015 Ryan Williams. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "BLCAppDelegate.h"
+#import "BLCMainMenuViewController.h"
 
-@interface AppDelegate ()
+@interface BLCAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation BLCAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    BLCMainMenuViewController *mainMenuViewController = [[BLCMainMenuViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BLCViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface BLCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 
 @end
-
