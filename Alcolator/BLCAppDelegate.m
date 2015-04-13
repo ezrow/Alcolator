@@ -7,9 +7,10 @@
 //
 
 #import "BLCAppDelegate.h"
-#import "BLCMainMenuViewController.h"
+#import "BLCViewController.h"
+#import "BLCWhiskeyViewController.h"
 
-@interface BLCAppDelegate ()
+@interface BLCAppDelegate () <UITabBarControllerDelegate>
 
 @end
 
@@ -18,12 +19,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    BLCMainMenuViewController *mainMenuViewController = [[BLCMainMenuViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
-    self.window.rootViewController = navigationController;
-    [self.window makeKeyAndVisible];
+    BLCViewController *wineVC = [[BLCViewController alloc] init];
+    BLCWhiskeyViewController *whiskeyVC = [[BLCWhiskeyViewController alloc] init];
+    UITabBarController *tabBarVC = [[UITabBarController alloc] init];
+    tabBarVC.viewControllers = @[wineVC, whiskeyVC];
     
+    self.window.rootViewController = tabBarVC;
+    [self.window makeKeyAndVisible];
+    tabBarVC.delegate = self;
     return YES;
+
+}
+
+- (void) tabBarController:(UITabBarController*)tabBarController didSelectViewController:(UIViewController*)viewController
+{
+     NSLog(@"controller title: %@", viewController.title);
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -17,6 +17,18 @@
 
 @implementation BLCViewController
 
+- (instancetype) init {
+    self = [super init];
+    
+    if (self) {
+        self.title = NSLocalizedString(@"Wine", @"wine");
+        [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+
+    }
+    
+    return self;
+}
+
 - (void)loadView {
     // Allocate and initialize the all-encompassing view
     self.view = [[UIView alloc] init];
@@ -42,6 +54,8 @@
     self.resultLabel = label;
     self.calculateButton = button;
     self.hideKeyboardTapGestureRecognizer = tap;
+    
+    self.view.backgroundColor = [UIColor colorWithRed:0.741 green:0.925 blue:0.714 alpha:1]; /*#bdecb6*/
 }
 
 - (void)textFieldDidChange:(UITextField *)sender {
@@ -65,9 +79,9 @@
     //self.numberOfBeers.text = [NSString stringWithFormat:@"%.0f", sender.value];
     [self.beerPercentTextField resignFirstResponder];
      self.title = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Wine", @"Wine") ,[self howManyGlasses]];
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) sender.value]];
     
 }
-
 
 - (NSString *)howManyGlasses {
     
@@ -220,8 +234,8 @@
     
     CGRect usableSpace = [[UIScreen mainScreen] applicationFrame];
     
-    NSLog(@"height = %f", usableSpace.size.height);
-    NSLog(@"width = %f", usableSpace.size.width);
+    //NSLog(@"height = %f", usableSpace.size.height);
+    //NSLog(@"width = %f", usableSpace.size.width);
     
     CGFloat viewWidth = usableSpace.size.width; //320;
     CGFloat padding = 20;
